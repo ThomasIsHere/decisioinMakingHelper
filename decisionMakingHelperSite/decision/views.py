@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 
@@ -18,14 +19,12 @@ class DetailView(generic.DetailView):
     template_name = 'decision/detail.html'
 
 
-# def saveQuestionInDB(request):
-#     new_question = Question(
-#         question_text=request.POST['question_text'],
-#         creation_date=request.POST['creation_date'],
-#         deadline_date=request.POST['deadline_date']
-#     )
-#     new_question.save()
-#     context = {'question': new_question,}
-#     print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-#     print(new_question.id)
-#     return render(request, 'decision/detail.html',context)
+def saveQuestionInDB(request):
+    new_question = Question(
+        question_text=request.POST['question_text'],
+        creation_date=request.POST['creation_date'],
+        deadline_date=request.POST['deadline_date']
+    )
+    new_question.save()
+    context = {'question': new_question,}
+    return render(request, 'decision/detail.html',context)

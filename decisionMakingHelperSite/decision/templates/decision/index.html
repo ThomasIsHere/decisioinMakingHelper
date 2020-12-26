@@ -19,9 +19,8 @@
     <p>No questions for decision are available.</p>
   {% endif %}
 
-
-  <!--form class="" action="{# url 'decision:detail' question.id #}" method="post">
-    {# csrf_token #}
+  <form class="" action="new_question/" method="post">
+    {% csrf_token %}
     <label for="question">Enter a question:</label>
     <input type="text" id="question" name="question_text"><br>
     <label for="creation_dt">Enter a creation date:</label>
@@ -29,7 +28,7 @@
     <label for="deadline_dt">Enter a deadline date:</label>
     <input type="datetime-local" id="deadline_dt" name="deadline_date"><br>
     <input type="submit" value="Add a question">
-  </form-->
+  </form>
 
 </body>
 </html>
