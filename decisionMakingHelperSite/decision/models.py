@@ -10,6 +10,15 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
+    def deadline_greater_or_eaqual_to_creation_date(self):
+        """
+        Returns True if deadline date >= creation date else False
+        """
+        if self.deadline_date >= self.creation_date:
+            return True
+        else:
+            return False
+
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
