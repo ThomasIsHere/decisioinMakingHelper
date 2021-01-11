@@ -22,7 +22,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    sign = models.BooleanField(default=None)
+    choice = models.BooleanField(default=None)
     weight = models.PositiveIntegerField(default=0)
     grade = models.PositiveIntegerField(default=0)
     answer_text = models.CharField(null=True, blank=True, max_length=200)
