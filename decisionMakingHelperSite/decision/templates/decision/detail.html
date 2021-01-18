@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>My test page</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'decision/style.css' %}">
-  </head>
-  <body>
-    <p>Detail view</p>
+{% extends "decision/base.html" %}
 
-    <h1>{{ question.question_text }}</h1>
+{% block title %}Detail{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <h1>Detail view</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>{{ question.question_text }}</h2>
     <ul>
     {% for answer in question.answer_set.all %}
         <li>{{ answer.answer_text }}</li>
     {% endfor %}
     </ul>
-
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}
