@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% extends "decision/base.html" %}
 
 {% block title %}Detail{% endblock %}
@@ -6,18 +5,38 @@
 {% block content %}
 <div class="row">
   <div class="col-md-6">
-    <h1>Detail view</h1>
+    <button type="button" class="btn btn-outline-primary" onclick="goToPreviousPage();">Go back</button>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-6">
+    <h1>Detail view</h1>
     <h2>{{ question.question_text }}</h2>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
     <ul>
     {% for answer in question.answer_set.all %}
-        <li>{{ answer.answer_text }}</li>
+      {% if answer.choice == True %}
+        <li>{{ answer.choice }} - {{ answer.weight }} - {{ answer.grade }} - {{ answer.answer_text }}</li>
+      {% endif %}
     {% endfor %}
     </ul>
   </div>
+
+  <div class="col-md-6">
+    <ul>
+    {% for answer in question.answer_set.all %}
+      {% if answer.choice == False %}
+        <li>{{ answer.choice }} - {{ answer.weight }} - {{ answer.grade }} - {{ answer.answer_text }}</li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+
 </div>
 {% endblock %}
